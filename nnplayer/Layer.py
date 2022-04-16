@@ -34,7 +34,7 @@ class Linear(Layer):
     def backward(self, G):
         self.params['w']['gradient'] = np.matmul(self.X.T, G)
         self.params['b']['gradient'] = np.sum(G, axis=0)
-        print(G.shape, self.params['w']['data'].shape, self.X.shape)
+        # print(G.shape, self.params['w']['data'].shape, self.X.shape)
         return np.matmul(G, self.params['w']['data'].T)
 
 
@@ -45,7 +45,7 @@ class Activate(Layer):
         return self.Y
 
     def backward(self, G):
-        print(self.X.shape, G.shape)
+        # print(self.X.shape, G.shape)
         return self.derivative(self.X) * G
 
     def function(self, X):

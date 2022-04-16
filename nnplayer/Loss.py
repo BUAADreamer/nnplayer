@@ -19,7 +19,7 @@ class MSELoss(Loss):
         return 0.5 * np.sum((self.Y_ans - self.Y_predict) ** 2) / self.Y_ans.shape[0]
 
     def gradient(self, Y_predict, Y_ans):
-        return (Y_ans - Y_predict) / Y_ans.shape[0]
+        return (Y_predict - Y_ans) / Y_ans.shape[0]
 
     def backward(self):
         self.model.backward(self.gradient(self.Y_predict, self.Y_ans))
